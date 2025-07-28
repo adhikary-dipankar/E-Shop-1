@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoodCraft | Furniture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5c68c3b-6280-4bc2-a901-d05e7a322d75.png" alt="WoodCraft logo" class="h-12">
+                <h1 class="text-xl font-bold text-gray-800">WoodCraft</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-home text-sm"></i>
+                    <span>Home</span>
+                </a>
+                <div class="relative">
+                    <button id="products-toggle" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                        <i class="fas fa-boxes text-sm"></i>
+                        <span>Products</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="products-dropdown" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 hidden z-50">
+                        <a href="plywood.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Plywood</a>
+                        <a href="glass.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Glass Products</a>
+                        <a href="doors.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Doors</a>
+                        <a href="windows.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Windows</a>
+                        <a href="furniture.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Furniture</a>
+                        <a href="custom.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Custom Solutions</a>
+                    </div>
+                </div>
+                <a href="index.html#about" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-info-circle text-sm"></i>
+                    <span>About</span>
+                </a>
+                <a href="index.html#contact" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-envelope text-sm"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="cart-btn" class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+                <button class="md:hidden" id="menu-toggle">
+                    <i class="fas fa-bars text-gray-700 text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-home w-5"></i>
+                <span>Home</span>
+            </a>
+            <div class="border-t border-gray-200 my-1"></div>
+            <div class="relative">
+                <button id="mobile-products-toggle" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2 w-full text-left">
+                    <i class="fas fa-boxes w-5"></i>
+                    <span>Products</span>
+                    <i class="fas fa-chevron-down ml-auto"></i>
+                </button>
+                <div id="mobile-products-dropdown" class="hidden pl-8">
+                    <a href="plywood.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Plywood</a>
+                    <a href="glass.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Glass Products</a>
+                    <a href="doors.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Doors</a>
+                    <a href="windows.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Windows</a>
+                    <a href="furniture.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Furniture</a>
+                    <a href="custom.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Custom Solutions</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 my-1"></div>
+            <a href="index.html#about" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-info-circle w-5"></i>
+                <span>About</span>
+            </a>
+            <a href="index.html#contact" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-envelope w-5"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Product Gallery -->
+    <section id="product-gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Furniture Collection</h2>
+                <a href="index.html#products" class="flex items-center text-primary-500 hover:text-primary-600">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Categories
+                </a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6qhFsP7vdsb9i00nfBDJCDikImf9Qhu6Lhg&s" 
+                         alt="Custom furniture" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Custom Furniture</h3>
+                        <p class="text-gray-600 mb-2">Size: Custom | Quality: Premium | Colors: Various | Use: Home, Office</p>
+                        <p class="text-gray-600 mb-4">₹Custom</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="4" data-name="Custom Furniture" data-price="0">
+                            <i class="fas fa-shopping-cart mr-2"></i> Request Quote
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfZWexNOtKaT8S0FqJw928XTIym7Tenh420g&s" 
+                         alt="Wooden table" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Table</h3>
+                        <p class="text-gray-600 mb-2">Size: 5x3 ft | Quality: High | Colors: Oak | Use: Dining</p>
+                        <p class="text-gray-600 mb-4">₹8000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="9" data-name="Wooden Table" data-price="8000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO-JOjLIZufCpdgtaPw_QsigzK4ZFhcIQCiw&s" 
+                         alt="Wooden chair" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Chair</h3>
+                        <p class="text-gray-600 mb-2">Size: Standard | Quality: Premium | Colors: Mahogany | Use: Dining, Office</p>
+                        <p class="text-gray-600 mb-4">₹2500/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="10" data-name="Wooden Chair" data-price="2500">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz5gO23tnIwS3tT3-PPuHEzbN7m8GShDJVJQ&s" 
+                         alt="Wooden sofa" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Sofa</h3>
+                        <p class="text-gray-600 mb-2">Size: 6-seater | Quality: High | Colors: Walnut | Use: Living Room</p>
+                        <p class="text-gray-600 mb-4">₹25000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="11" data-name="Wooden Sofa" data-price="25000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZLit1z1OJRJRGjX3EERlp3a-samJzx9yyZQ&s" 
+                         alt="Wooden cabinet" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Cabinet</h3>
+                        <p class="text-gray-600 mb-2">Size: 4x2 ft | Quality: Premium | Colors: Teak | Use: Storage</p>
+                        <p class="text-gray-600 mb-4">₹15000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="12" data-name="Wooden Cabinet" data-price="15000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlvz3r99erKyl70oSdXSUU574nzHmaLvCnQ&s" 
+                         alt="Wooden bed" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Bed</h3>
+                        <p class="text-gray-600 mb-2">Size: King Size | Quality: High | Colors: Natural | Use: Bedroom</p>
+                        <p class="text-gray-600 mb-4">₹30000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="13" data-name="Wooden Bed" data-price="30000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfAzW7o4PO3hL8K46TK-ayb8Mzmdac5rE_3A&s" 
+                         alt="Wooden wardrobe" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Wardrobe</h3>
+                        <p class="text-gray-600 mb-2">Size: 6x3 ft | Quality: Premium | Colors: Cherry | Use: Bedroom</p>
+                        <p class="text-gray-600 mb-4">₹20000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="14" data-name="Wooden Wardrobe" data-price="20000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+                                <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIudrRXYhMf6mjg8ElrLgISzpjTER9JQN1bA&s" 
+                         alt="Wooden wardrobe" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Dining Table</h3>
+                        <p class="text-gray-600 mb-2">Size: 6x3 ft | Quality: Premium | Colors: Cherry | Use: Bedroom</p>
+                        <p class="text-gray-600 mb-4">₹20000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="14" data-name="Wooden Wardrobe" data-price="20000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+                    <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREKlzigRTktSfEgK8fqRbblPlGOzShfnEJdw&s" 
+                         alt="Wooden wardrobe" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="font-bold text-xl mb-1">Wooden Boxes</h3>
+                        <p class="text-gray-600 mb-2">Size: 6x3 ft | Quality: Premium | Colors: Cherry | Use: Bedroom</p>
+                        <p class="text-gray-600 mb-4">₹20000/unit</p>
+                        <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" 
+                                data-id="14" data-name="Wooden Wardrobe" data-price="20000">
+                            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6">
+                <div class="text-center py-8">
+                    <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-3"></i>
+                    <p class="text-gray-600">Your cart is empty</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+            </div>
+            <a href="#" id="whatsapp-order-btn" class="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition flex items-center justify-center">
+                <i class="fab fa-whatsapp mr-2"></i> Order via WhatsApp
+            </a>
+        </div>
+    </div>
+    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <!-- WhatsApp Float Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/919876543210?text=I'd%20like%20to%20inquire%20about%20your%20products" >
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">WoodCraft</h3>
+                    <p>Premium plywood, glass, and custom solutions since 2005.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#home" class="footer-link">Home</a></li>
+                        <li><a href="index.html#products" class="footer-link">Products</a></li>
+                        <li><a href="index.html#about" class="footer-link">About</a></li>
+                        <li><a href="index.html#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="plywood.html" class="footer-link">Plywood</a></li>
+                        <li><a href="glass.html" class="footer-link">Glass Items</a></li>
+                        <li><a href="doors.html" class="footer-link">Doors</a></li>
+                        <li><a href="windows.html" class="footer-link">Windows</a></li>
+                        <li><a href="furniture.html" class="footer-link">Furniture</a></li>
+                        <li><a href="custom.html" class="footer-link">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-primary-400"></i>
+                            <span>123 Wood Street, Industrial Area, City - 123456</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-primary-400"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary-400"></i>
+                            <span>info@woodcraft.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2025 WoodCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

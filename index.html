@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoodCraft | Premium Plywood & Glass Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5c68c3b-6280-4bc2-a901-d05e7a322d75.png" alt="WoodCraft logo" class="h-12">
+                <h1 class="text-xl font-bold text-gray-800">WoodCraft</h1>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-home text-sm"></i>
+                    <span>Home</span>
+                </a>
+                <div class="relative">
+                    <button id="products-toggle" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                        <i class="fas fa-boxes text-sm"></i>
+                        <span>Products</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="products-dropdown" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 hidden z-50">
+                        <a href="plywood.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Plywood</a>
+                        <a href="glass.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Glass Products</a>
+                        <a href="doors.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Doors</a>
+                        <a href="windows.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Windows</a>
+                        <a href="furniture.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Furniture</a>
+                        <a href="custom.html" class="block px-4 py-2 text-gray-800 hover:bg-primary-50">Custom Solutions</a>
+                    </div>
+                </div>
+                <a href="#about" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-info-circle text-sm"></i>
+                    <span>About</span>
+                </a>
+                <a href="#contact" class="nav-link flex items-center space-x-1 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-envelope text-sm"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="cart-btn" class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+                <button class="md:hidden" id="menu-toggle">
+                    <i class="fas fa-bars text-gray-700 text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="index.html" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-home w-5"></i>
+                <span>Home</span>
+            </a>
+            <div class="border-t border-gray-200 my-1"></div>
+            <div class="relative">
+                <button id="mobile-products-toggle" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2 w-full text-left">
+                    <i class="fas fa-boxes w-5"></i>
+                    <span>Products</span>
+                    <i class="fas fa-chevron-down ml-auto"></i>
+                </button>
+                <div id="mobile-products-dropdown" class="hidden pl-8">
+                    <a href="plywood.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Plywood</a>
+                    <a href="glass.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Glass Products</a>
+                    <a href="doors.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Doors</a>
+                    <a href="windows.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Windows</a>
+                    <a href="furniture.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Furniture</a>
+                    <a href="custom.html" class="block px-4 py-2 hover:bg-gray-100 rounded-lg">Custom Solutions</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 my-1"></div>
+            <a href="#about" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-info-circle w-5"></i>
+                <span>About</span>
+            </a>
+            <a href="#contact" class="block px-4 py-3 hover:bg-gray-100 rounded-lg flex items-center space-x-2">
+                <i class="fas fa-envelope w-5"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-r from-primary-800 to-primary-600">
+            <div class="container mx-auto px-6 py-32 text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Craft Your Space with WoodCraft</h1>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto mb-10">Explore our premium collection of plywood, glass, doors, windows, and custom furniture for homes and businesses.</p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#products" class="bg-secondary-500 text-white hover:bg-secondary-600 px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg">
+                        Shop Now
+                    </a>
+                    <a href="#about" class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-50 to-transparent"></div>
+        </section>
+
+        <!-- Category Tiles -->
+        <section id="products" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-primary-500 font-semibold">OUR COLLECTIONS</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Premium Materials for Every Project</h2>
+                    <div class="w-20 h-1 bg-primary-500 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="plywood">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Premium plywood sheets" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Plywood</h3>
+                            <p class="mb-4">High-quality plywood for furniture and construction</p>
+                            <a href="plywood.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="glass">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4f77ca79-56e8-449a-aadd-f2e77310fe83.png" 
+                                 alt="Glass panels and sheets" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Glass Items</h3>
+                            <p class="mb-4">Elegant glass solutions for decor and utility</p>
+                            <a href="glass.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="doors">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/45f9a6cd-fab5-439f-abcc-3317f75a3525.png" 
+                                 alt="Modern wooden doors" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Doors</h3>
+                            <p class="mb-4">Stylish and durable doors for every space</p>
+                            <a href="doors.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="windows">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f568841-fe2c-4bee-ae30-53f99cc100e9.png" 
+                                 alt="Elegant window frames" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Windows</h3>
+                            <p class="mb-4">Modern windows for aesthetic and function</p>
+                            <a href="windows.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="furniture">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5a1d186a-a6f6-442a-920b-cf8e422f4ca4.png" 
+                                 alt="Wooden furniture pieces" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Furniture</h3>
+                            <p class="mb-4">Custom-crafted furniture for unique spaces</p>
+                            <a href="furniture.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="category-card group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" data-category="custom">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b886e19b-3a7e-4729-bd9e-a28725823fe6.png" 
+                                 alt="Custom wood and glass products" 
+                                 class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Custom Solutions</h3>
+                            <p class="mb-4">Tailored solutions for your specific needs</p>
+                            <a href="custom.html" class="inline-block px-6 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all">
+                                Explore <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9PovLBp8bhPCcdkOC_NJOSlN8FiVr6k9zqQ&s" 
+                                 alt="Birch plywood sheet" 
+                                 class="w-full h-52 object-cover">
+                            <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-bold">BESTSELLER</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-xl mb-1">Birch Plywood</h3>
+                            <p class="text-gray-600 mb-2">Size: 8x4 ft | Quality: Premium | Colors: Natural</p>
+                            <p class="text-gray-600 mb-4">₹850/sheet</p>
+                            <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" data-id="1" data-name="Birch Plywood" data-price="850">
+                                <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAj4cARbSVOpswliHsf5XL7nTVETWLpwCf7g&s" 
+                                 alt="Tempered glass sheets" 
+                                 class="w-full h-52 object-cover">
+                            <span class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">NEW</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-xl mb-1">Tempered Glass</h3>
+                            <p class="text-gray-600 mb-2">Size: 6x4 ft | Quality: High | Colors: Clear</p>
+                            <p class="text-gray-600 mb-4">₹1200/sheet</p>
+                            <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" data-id="2" data-name="Tempered Glass" data-price="1200">
+                                <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCCVwitr6DCQXhb0ipSAtqUJ-wBExouUAdeg&s" 
+                                 alt="Wooden doors" 
+                                 class="w-full h-52 object-cover">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-xl mb-1">Premium Doors</h3>
+                            <p class="text-gray-600 mb-2">Size: 7x3 ft | Quality: Premium | Colors: Teak</p>
+                            <p class="text-gray-600 mb-4">₹4500/unit</p>
+                            <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" data-id="3" data-name="Premium Doors" data-price="4500">
+                                <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREKlzigRTktSfEgK8fqRbblPlGOzShfnEJdw&s" 
+                                 alt="Custom furniture" 
+                                 class="w-full h-52 object-cover">
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-xl mb-1">Custom Furniture</h3>
+                            <p class="text-gray-600 mb-2">Size: Custom | Quality: Premium | Colors: Various</p>
+                            <p class="text-gray-600 mb-4">₹Custom</p>
+                            <button class="add-to-cart-btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg flex items-center transition-all" data-id="4" data-name="Custom Furniture" data-price="0">
+                                <i class="fas fa-shopping-cart mr-2"></i> Request Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-gray-800 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-8 text-center">About WoodCraft</h2>
+                    <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Our Story</h3>
+                            <p class="mb-4">Since 2005, WoodCraft has been a trusted name in providing high-quality plywood, glass, and custom solutions for homes and businesses.</p>
+                            <p>Our commitment to quality and customer satisfaction drives us to deliver exceptional materials and service.</p>
+                        </div>
+                        <div>
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/270ad7fb-c2e2-435b-95f1-444835394727.png" alt="WoodCraft workshop" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div class="feature-card">
+                            <div class="text-4xl mb-4 text-secondary-400"><i class="fas fa-medal"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Quality Materials</h3>
+                            <p>Sourced from trusted suppliers for durability and reliability.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-4 text-secondary-400"><i class="fas fa-tools"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Custom Solutions</h3>
+                            <p>Tailored designs to meet your unique project needs.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-4 text-secondary-400"><i class="fas fa-truck"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                            <p>Timely and reliable delivery to your doorstep.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+                        <p class="mb-4">Reach out via WhatsApp for inquiries or to place an order.</p>
+                        <a href="https://wa.me/919876543210?text=I'd%20like%20to%20inquire%20about%20your%20products" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Contact via WhatsApp
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Our Location</h3>
+                        <div class="mb-6">
+                            <div class="flex items-start mb-4">
+                                <i class="fas fa-map-marker-alt text-primary-500 mt-1 mr-3"></i>
+                                <p>123 Wood Street, Industrial Area, City - 123456</p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-phone-alt text-primary-500 mr-3"></i>
+                                <p>+91 98765 43210</p>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-envelope text-primary-500 mr-3"></i>
+                                <p>info@woodcraft.com</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-medium mb-2">Business Hours</h4>
+                            <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                            <p>Sunday: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6">
+                <div class="text-center py-8">
+                    <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-3"></i>
+                    <p class="text-gray-500">Your cart is empty</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-4 mb-4">
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+            </div>
+            <a href="#" id="whatsapp-order-btn" class="w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition flex items-center justify-center">
+                <i class="fab fa-whatsapp mr-2"></i> Order via WhatsApp
+            </a>
+        </div>
+    </div>
+    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <!-- WhatsApp Float Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/919876543210?text=I'd%20like%20to%20inquire%20about%20your%20products" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">WoodCraft</h3>
+                    <p>Premium plywood, glass, and custom solutions since 2005.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#about" class="footer-link">About</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="plywood.html" class="footer-link">Plywood</a></li>
+                        <li><a href="glass.html" class="footer-link">Glass Items</a></li>
+                        <li><a href="doors.html" class="footer-link">Doors</a></li>
+                        <li><a href="windows.html" class="footer-link">Windows</a></li>
+                        <li><a href="furniture.html" class="footer-link">Furniture</a></li>
+                        <li><a href="custom.html" class="footer-link">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-primary-400"></i>
+                            <span>123 Wood Street, Industrial Area, City - 123456</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-primary-400"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary-400"></i>
+                            <span>info@woodcraft.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2025 WoodCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
